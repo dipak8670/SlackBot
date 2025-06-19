@@ -4,14 +4,14 @@ from slack_bolt.adapter.socket_mode import SocketModeHandler
 from slack_sdk import WebClient
 from dotenv import load_dotenv
 load_dotenv()
-# Initializes your app with your bot token
+
 app = App(token=os.environ.get("SLACK_BOT_TOKEN"))
-# Your command keyword
+
 EXAMPLE_COMMAND = "do"
 ALERT_COMMAND = "alert"
-# Initialize web client (sending alerts)
+
 client = WebClient(token=os.environ["SLACK_BOT_TOKEN"])
-# Handle direct mentions (app_mention events)
+
 @app.event("app_mention")
 def handle_app_mention(event, say):
     user = event.get("user")
@@ -27,7 +27,7 @@ def handle_app_mention(event, say):
         say(f"<@{user}> Sure... write some more code then I can do that!")
     else:
         say(f"<@{user}> Not sure what you mean. Try *{EXAMPLE_COMMAND}*.")
-# Start the Socket Mode app
+
 if __name__ == "__main__":
     handler = SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"])
     handler.start()
