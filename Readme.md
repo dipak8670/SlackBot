@@ -1,4 +1,4 @@
-#SlackBot
+# SlackBot
 ## Dependencies
 - Requires `slack_sdk` and `slack_bolt` packages.
 - Requires `venv`.
